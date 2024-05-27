@@ -95,7 +95,7 @@ body
 {
     width: 100%; 
 }
-.inputBox span
+.inputBox label
 {
     color: #fff;
     margin-top: 10px;
@@ -127,6 +127,7 @@ body
     /*background-color: #151618;;*/
 }
 .inputBox input[type="submit"]
+
 {
     background: goldenrod;
     color: #262902;
@@ -160,7 +161,7 @@ body
     align-items: center;
     margin-bottom: 10px;
 }
-.info .infoBox div span
+.info .infoBox div label
 {
     min-width: 40px;
     height: 40px;
