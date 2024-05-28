@@ -119,5 +119,62 @@
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
+<script>
+    const validateEmail = (email) => {
+  return String(email)
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+  };
+
+  function contact(){
+    const first_name = document.getElementById("fname").value;
+    const last_name = document.getElementById("lname").value;
+    const email = document.getElementById("email").value;
+    const mobile = document.getElementById("mobile").value;
+    const message = document.getElementById("msg").value;
+
+    if (!first_name || first_name == "") {
+    alert("Please Insert first_name");
+    return;
+  }
+
+  if (!last_name || last_name == "") {
+    alert("Please Insert last_name");
+    return;
+  }
+
+  if (!mobile) {
+    alert("Please Insert your phone number");
+    return;
+  }
+
+  if (!message) {
+    alert("Please write your message");
+    return;
+  }
+
+  if (!eamil) {
+    alert("Please Insert email");
+    return;
+  } else {
+    if (!validateEmail(eamil)) {
+      alert("Invalid email");
+      return;
+    }
+  }
+  let data = {
+    fname: first_name,
+    lname: last_name,
+    mobile:mobile,
+    email: eamil,
+    msg: message,
+  };
+  console.log("data", data);
+}
+  
+</script>
+
     </body>
 </html>
