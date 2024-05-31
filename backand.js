@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    database: 'contact_us'
+    database: 'savory_sizzle'
 });
 connection.connect(
     (err) => {
