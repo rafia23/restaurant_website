@@ -9,6 +9,20 @@
         <link rel="stylesheet" href="contact us 2.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="icon" href="http://example.com/favicon.png">
+
+          <style>
+.button1{
+    background-color: rgb(192, 147, 34);
+    border-radius: 3px;
+    color: white;
+    width: 20%;
+    padding: 10px;
+}
+.button1:hover{
+    cursor: pointer;
+    background-color: rgb(205, 150, 40);
+}
+</style>
     </head>
 
     <body>
@@ -23,7 +37,7 @@
                    <h3>
                     Send a Message
                    </h3>
-                   <form>
+                   <div class="form">
                     <div class="formBox">
                         <div class="row50">
                             <!--first name-->
@@ -53,20 +67,22 @@
                           <!--for message-->
                         <div class="row100">
                             <div class="inputBox">
-                              <lable for="msg">Message</lable>
-                             <textarea id="msg" name="msg" placeholder="Write your message here..."></textarea>
+                              <lable for="message">Message</lable>
+                             <textarea id="message" name="message" placeholder="Write your message here..."></textarea>
                             </div>
                         </div>
                            <!--for button-->
                         <div class="row100">
-                            <div class="inputBox">
+                            <!-- <div class="inputBox">
                              <input type="submit" value="send"> 
-                            </div>
+                            </div> -->
+                            <button class="button1" onclick="send()">Send</button>
+                             
                         </div>
 
                     </div>
     
-                   </form>
+                  </div>
                 </div>
 
                 <!--info box-->
@@ -128,12 +144,13 @@
     );
   };
 
-  function contact(){
+  function send(){
+    
     const first_name = document.getElementById("fname").value;
     const last_name = document.getElementById("lname").value;
     const email = document.getElementById("email").value;
     const mobile = document.getElementById("mobile").value;
-    const message = document.getElementById("msg").value;
+    const message = document.getElementById("message").value;
 
     if (!first_name || first_name == "") {
     alert("Please Insert first_name");
@@ -155,11 +172,11 @@
     return;
   }
 
-  if (!eamil) {
+  if (!email) {
     alert("Please Insert email");
     return;
   } else {
-    if (!validateEmail(eamil)) {
+    if (!validateEmail(email)) {
       alert("Invalid email");
       return;
     }
@@ -168,10 +185,26 @@
     fname: first_name,
     lname: last_name,
     mobile:mobile,
-    email: eamil,
-    msg: message,
+    email: email,
+    message: message,
   };
   console.log("data", data);
+
+  fetch("http://localhost:3000/add-message", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  })
+    .then((res) => res.json())
+    .then((res) => {
+      console.log("res", res);
+      if (res.result) {
+        alert("Send successfully");
+        location.href = "./contact us 2.html";
+      } else {
+        alert("unsend! Please try again!!" + res.error.sqlMessage);
+      }
+    });
 }
   
 </script>

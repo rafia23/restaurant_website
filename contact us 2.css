@@ -33,7 +33,7 @@ body
     padding: 20px;
     
 }
-.form
+.div.form
 {
     grid-area: form;
 }
@@ -126,7 +126,7 @@ body
     /*///////////*/
     /*background-color: #151618;;*/
 }
-.inputBox input[type="submit"]
+/* .inputBox input[type="submit"]
 
 {
     background: goldenrod;
@@ -137,7 +137,7 @@ body
     font-weight: 500;
     cursor: pointer;
     padding: 14px 15px;
-}
+} */
 .inputBox ::placeholder
 {
     color: #999;
@@ -161,7 +161,7 @@ body
     align-items: center;
     margin-bottom: 10px;
 }
-.info .infoBox div label
+.info .infoBox div span
 {
     min-width: 40px;
     height: 40px;
