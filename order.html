@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Savory Sizzle</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+  <div class="background"></div>
+  <nav id="navbar">
+    <h1 class="header">Savory Sizzle</h1>
+
+    <ul>
+      <li class="item"><a href="/">Home</a></li>
+      <li class="item"><a href="#">About Us</a></li>
+      <li class="item"><a href="/menu">Menu</a></li>
+      <li class="item"><a href="#">Specials</a></li>
+      <li class="item"><a href="#">Contact Us</a></li>
+      <li class="item"><a href="#">Reservation</a></li>
+      <li class="item"><a href="/order">Order</a></li>
+    </ul>
+    <div class="bk_btn">
+      <a href="#" class="book_table_btn">Book a table</a>
+    </div>
+  </nav>
+
+  <div class="order" id="order">
+    <h1><span>Order</span>Now</h1>
+    <form>
+      <label>Full name</label>
+      <input type="text" id="name" name="name" placeholder="Enter fullname">
+      <label>Email</label>
+      <input type="text" id="email" name="email" placeholder="Enter email">
+      <label>Phone number</label>
+      <input type="text" id="phone" name="phone" placeholder="Enter phone number">
+      <label>Address</label>
+      <input type="text" id="address" name="address" placeholder="Enter address">
+      <label>Product ID</label>
+      <input type="text" id="productid" name="productid" placeholder="Enter product ID">
+      <button type="submit" class="order_btn" onclick="order()">Order Now</button>
+    </form>
+  </div>
+  <script>
+    function order() {
+    
+      event.preventDefault();
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const phone = document.getElementById("phone").value;
+      const address = document.getElementById("address").value;
+      const productid = document.getElementById("productid").value;
+
+      if (!name || !phone || !email || !address || !productid) {
+        alert('Please fill out the form');
+        window.location.href = "/order";
+    }
+
+      fetch("/order_info", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          phone: phone,
+          address: address,
+          productid: productid,
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.success) {
+            alert("Order Successful");
+            window.location.href = "/menu";
+          } else {
+            alert(data.error);
+          }
+        });
+    }
+  </script>
+</body>
+
+</html>
