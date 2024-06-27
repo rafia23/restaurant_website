@@ -9,11 +9,8 @@
     left: 0px;
     width: 1530px;
     height: 100vh;
-<<<<<<< HEAD:public/style.css
     background-image: url('/bg.png');
-=======
     background-image: url('/img/bg.png');
->>>>>>> 0a2dd3eef2907ad432af865284cda64c9f605217:style.css
     z-index: -1;
     opacity: 0.9;
 }
@@ -243,7 +240,6 @@
 }
 
 /*Order*/
-<<<<<<< HEAD:public/style.css
 
 form{
     display: flex;
@@ -302,7 +298,8 @@ form input{
 .order h1 span{
     color: #cda45e;
     margin-right: 15px;
-=======
+}
+
 .order{
     width: 1530px;
     height: 100vh;
@@ -369,5 +366,4 @@ background: rgb(13, 3, 3);
 
 .order .input input:focus{
     border: 3px solid #cda45e;
->>>>>>> 0a2dd3eef2907ad432af865284cda64c9f605217:style.css
 }
